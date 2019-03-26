@@ -21,4 +21,21 @@ describe('Main CLI', () => {
       done();
     })
   });
+
+  it('should return the currency option when btcConverter --help', (done) => {
+    exec(`${btcConverter} --help`, (err, stdout, stderr) => {
+      if(err) throw err;
+      expect(stdout.includes('--currency')).to.be.true;
+      done();
+    })
+  });
+
+  it('should return the amount option when btcConverter --help', (done) => {
+    exec(`${btcConverter} --help`, (err, stdout, stderr) => {
+      if(err) throw err;
+      const text = 'Convert Bitcoin to any currency defined.';
+      expect(stdout.includes('--amount')).to.be.true;
+      done();
+    })
+  });
 });
